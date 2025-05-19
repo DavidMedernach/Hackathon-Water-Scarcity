@@ -38,8 +38,8 @@ COLOR_SCHEMES = {
         2: "#8A2BE2"   # Blue Violet - Le Tarn
     },
     'priority_ok': {
-        0: "#2E8B57",  # Sea Green - Satisfy priority
-        1: "#FF6347"   # Tomato - Do not satisfy priority
+        1: "#2E8B57",  # Sea Green - Satisfy priority
+        0: "#FF6347"   # Tomato - Do not satisfy priority
     },
     'scenario': {
         "0.yml": {"color": "#1E90FF", "marker": "o", "name": "Base 0"},           # Dodger Blue
