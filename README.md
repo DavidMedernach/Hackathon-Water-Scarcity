@@ -1,52 +1,54 @@
 # Hackathon on Water Scarcity 2025 - Baseline Model Repository
 
-This repository provides a simple toolkit to train baseline models and generate submission files for the [Hackathon on Water Scarcity 2025](https://www.codabench.org/competitions/4335). The baseline models predict water discharge for the 52 stations of eval dataset. You are free to experiment with different modeling approaches or use distinct models per station, as long as your submission file adheres to the required format (see Codabench guidelines).
+This repository offers a streamlined toolkit for training baseline models to predict river discharge and generating submission files for the [Hackathon on Water Scarcity 2025](https://www.codabench.org/competitions/4335). The baseline model forecasts water discharge at 52 evaluation stations using meteorological data, soil composition, hydrographic catchment characteristics, and other relevant features. You're encouraged to explore alternative modeling approaches or tailor models per station, provided your final submission conforms to the Codabench format.
+
+## Installation
+
+### Using Poetry
+
+```bash
+# Clone the repository
+git clone https://github.com/DavidMedernach/Hackathon-Water-Scarcity.git
+cd Hackathon-Water-Scarcity
+
+# Install Poetry if needed
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Install dependencies
+poetry install
+```
+
+### Using requirements.txt
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Data
 
 - **Download:**  
-  Obtain the dataset from [Zenodo](https://zenodo.org/records/14826458).  
+  Acquire the dataset from [Zenodo](https://zenodo.org/records/14826458).  
 - **Setup:**  
-  Unzip the dataset and place it in the root directory of the repository.
+  Unzip and place the dataset folder in the repository root.
 
-## Notebook Structure
+## Notebook Workflow
 
-0. **Preprocessing**
-   - *01 - Data Preprocessing*
-   - *02 - Feature Engineering*
+0. **Preprocessing**  
+   - `01 - Data Preprocessing.ipynb`  
+   - `02 - Feature Engineering.ipynb`  
 
-1. **Training and Submission**
-   - *03 - Modelisation*
-   - *01 - Prediction Computation*
+1. **Model Training & Submission**  
+   - `03 - Modelisation.ipynb`  
+   - `04 - Prediction Computation.ipynb`  
 
-2. **Exploration**
-   - *01 - Performance Comparison*
-   - *02 - Single Model Optimisation*
-
+2. **Exploration & Analysis**  
+   - `05 - Performance Comparison.ipynb`  
+   - `06 - Single Model Optimisation.ipynb`  
 
 ## Submission
 
-After running the notebooks, create your submission file (`data/evaluation/predictions.zip`) and upload it to [Codabench](https://www.codabench.org/competitions/4335).
+After executing the notebooks, package your predictions in `data/evaluation/predictions.zip` and submit via [Codabench](https://www.codabench.org/competitions/4335).
 
-## Setup Local Environment
+## License
 
-1. **Python Version**
-This repository was developed and tested using Python 3.12.6. For best compatibility, please ensure you are using Python 3.12 or a newer version.
-
-2. **Create your venv - Mac version**
-
-```shell
-# Create a virtual environment
-python3 -m venv .venv
-
-# Activate the virtual environment
-source .venv/bin/activate
-
-# Upgrade pip if needed
-pip install --upgrade pip
-
-# Install required packages
-pip install -r requirements.txt
-
-# Add the current directory to PYTHONPATH
-export PYTHONPATH="$PYTHONPATH:$PWD"
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
