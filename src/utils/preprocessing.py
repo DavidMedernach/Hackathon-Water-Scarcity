@@ -1,16 +1,21 @@
-import gc
+"""Preprocessing utilities for spatial-temporal interpolation and data merging.
 
+This module provides functions to prepare k-d trees for spatial queries,
+interpolate variables using inverse distance weighting, and merge interpolated
+data with water flow observations. It also includes functions to handle
+geometries and region-level data.
+"""
+
+import gc
 import numpy as np
 import pandas as pd  # type: ignore
 from scipy.spatial import cKDTree  # type: ignore
-from rioxarray.exceptions import NoDataInBounds 
+from rioxarray.exceptions import NoDataInBounds
 import xarray as xr
 
 
-def prepare_kdtree(lats: np.ndarray,
-                   lons: np.ndarray) -> cKDTree:
-    """
-    Prepare a k-d tree for spatial queries using latitude and longitude.
+def prepare_kdtree(lats: np.ndarray, lons: np.ndarray) -> cKDTree:
+    """Prepare a k-d tree for spatial queries using latitude and longitude.
 
     Args:
         lats (np.ndarray): Array of latitudes.
@@ -23,10 +28,8 @@ def prepare_kdtree(lats: np.ndarray,
     return cKDTree(coords)
 
 
-def inverse_distance_weighting(values: np.ndarray,
-                               distances: np.ndarray) -> float:
-    """
-    Perform inverse distance weighting to interpolate a value.
+def inverse_distance_weighting(values: np.ndarray, distances: np.ndarray) -> float:
+    """Perform inverse distance weighting to interpolate a value.
 
     Args:
         values (np.ndarray): Array of values to be weighted.
@@ -40,14 +43,9 @@ def inverse_distance_weighting(values: np.ndarray,
 
 
 def interpolate_variable(
-    water_flows: pd.DataFrame,
-    kdtree: cKDTree,
-    variable_data,
-    k: int = 4
+    water_flows: pd.DataFrame, kdtree: cKDTree, variable_data, k: int = 4
 ) -> list:
-    """
-    Interpolate a variable to match the spatial locations in water_flows
-    using a k-d tree.
+    """Interpolate a variable to match the spatial locations in water_flows using a k-d tree.
 
     Args:
         water_flows (pd.DataFrame): DataFrame containing station coordinates
@@ -68,8 +66,9 @@ def interpolate_variable(
         distances, indices = kdtree.query(station_coords, k=k)
 
         # Retrieve values at the specified time
-        var_time = variable_data.sel(valid_time=obs_date,
-                                     method="nearest").values.flatten()
+        var_time = variable_data.sel(
+            valid_time=obs_date, method="nearest"
+        ).values.flatten()
         values = var_time[indices]
 
         # Compute interpolated value
@@ -86,8 +85,7 @@ def interpolate_geometry_time_optimized(
     k: int = 4,
     agg_func=np.mean,
 ) -> pd.DataFrame:
-    """
-    Perform optimized spatial-temporal interpolation for geometries.
+    """Perform optimized spatial-temporal interpolation for geometries.
 
     Args:
         water_flows (pd.DataFrame): DataFrame with water flow observations
@@ -103,16 +101,18 @@ def interpolate_geometry_time_optimized(
         pd.DataFrame: Interpolated values aligned with geodf and water_flows.
     """
     # Compute centroids for geometries
-    centroids = np.array([[geom.centroid.y,
-                           geom.centroid.x] for geom in geodf.geometry])
+    centroids = np.array(
+        [[geom.centroid.y, geom.centroid.x] for geom in geodf.geometry]
+    )
 
     # Precompute k nearest neighbors for all centroids
     distances, indices = kdtree.query(centroids, k=k)
     # Interpolate for each unique observation date
     results = []
     for obs_date in water_flows["ObsDate"].unique():
-        var_time = variable_data.sel(valid_time=obs_date,
-                                     method="nearest").values.flatten()
+        var_time = variable_data.sel(
+            valid_time=obs_date, method="nearest"
+        ).values.flatten()
         values = var_time[indices]
         aggregated_values = agg_func(values, axis=1)
         results.append(aggregated_values)
@@ -132,8 +132,7 @@ def prepare_and_merge_region_data_optimized(
     value_name: str,
     dtype_column: str,
 ) -> pd.DataFrame:
-    """
-    Prepare and merge region-level data into the water_flows DataFrame.
+    """Prepare and merge region-level data into the water_flows DataFrame.
 
     Args:
         water_flows (pd.DataFrame): DataFrame containing water flow data.
@@ -159,9 +158,7 @@ def prepare_and_merge_region_data_optimized(
     )
 
     # Merge with water flow data
-    return water_flows.merge(region_long,
-                             how="left",
-                             on=["ObsDate", dtype_column])
+    return water_flows.merge(region_long, how="left", on=["ObsDate", dtype_column])
 
 
 def interpolate_and_merge_optimized(
@@ -174,9 +171,7 @@ def interpolate_and_merge_optimized(
     k: int = 4,
     agg_func=np.mean,
 ) -> pd.DataFrame:
-    """
-    Interpolate a variable and merge the results into the water_flows
-    DataFrame.
+    """Interpolate a variable and merge the results into the water_flows DataFrame.
 
     Args:
         water_flows (pd.DataFrame): DataFrame containing water flow data.
@@ -192,7 +187,6 @@ def interpolate_and_merge_optimized(
     Returns:
         pd.DataFrame: Updated water_flows DataFrame with interpolated data.
     """
-
     # Perform interpolation
     interpolated = interpolate_geometry_time_optimized(
         water_flows, kdtree, variable_data, geodf, k=k, agg_func=agg_func
@@ -210,14 +204,8 @@ def interpolate_and_merge_optimized(
     return water_flows
 
 
-def get_altitude(
-    lat: float,
-    lon: float,
-    dem: xr.DataArray
-) -> float:
-    """
-    Get the altitude for a given latitude and longitude using
-    a digital elevation model (DEM).
+def get_altitude(lat: float, lon: float, dem: xr.DataArray) -> float:
+    """Get the altitude for a given latitude and longitude using DEM.
 
     Args:
         lat (float): Latitude coordinate.
@@ -228,6 +216,6 @@ def get_altitude(
         float: The altitude at the given coordinates.
     """
     try:
-        return dem.sel(x=lon, y=lat, method='nearest').values.item()
+        return dem.sel(x=lon, y=lat, method="nearest").values.item()
     except NoDataInBounds:
         return np.nan

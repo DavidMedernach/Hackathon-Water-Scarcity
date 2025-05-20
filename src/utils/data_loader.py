@@ -1,3 +1,5 @@
+"""Load raw data for the hydrological model."""
+
 import geopandas as gpd
 import pandas as pd
 import rioxarray
@@ -5,10 +7,9 @@ import xarray as xr
 
 
 def load_hydro_data(area, dir):
-    """
-    Load hydro area data for a given Level of the hydrographic network.
+    """Load hydro area data for a given Level of the hydrographic network.
 
-    Parameters:
+    Args:
       area (str): France or Brazil
       dataset_dir (str): Base directory containing the data
 
@@ -31,20 +32,19 @@ def load_hydro_data(area, dir):
         raise ValueError(f"Area '{area}' not supported.")
 
     hydro_data = {
-        'region': gpd.read_file(region_file),
-        'sector': gpd.read_file(sector_file),
-        'sub_sector': gpd.read_file(sub_sector_file),
-        'zone': gpd.read_file(zone_file)
+        "region": gpd.read_file(region_file),
+        "sector": gpd.read_file(sector_file),
+        "sub_sector": gpd.read_file(sub_sector_file),
+        "zone": gpd.read_file(zone_file),
     }
 
     return hydro_data
 
 
 def read_soil_data(area, dir):
-    """
-    Read soil data for a given area.
+    """Read soil data for a given area.
 
-    Parameters:
+    Args:
       area (str): France or Brazil
       dir (str): Base directory containing the data
 
@@ -57,10 +57,9 @@ def read_soil_data(area, dir):
 
 
 def read_altitude_data(area, dir):
-    """
-    Read altitude data (DEM) for a given area.
+    """Read altitude data (DEM) for a given area.
 
-    Parameters:
+    Args:
       area (str): France or Brazil
       dir (str): Base directory containing the data
 
@@ -73,10 +72,9 @@ def read_altitude_data(area, dir):
 
 
 def load_meteo_data(area, meteo_type, dir):
-    """
-    Load meteo data for a given area and type.
+    """Load meteo data for a given area and type.
 
-    Parameters:
+    Args:
       area (str) : France or Brazil
       meteo_type (str) : Type of data (the key used in `datasets`)
       dir (str) : Base directory containing the data
@@ -98,18 +96,17 @@ def load_meteo_data(area, meteo_type, dir):
         "precipitations": precipitations,
         "temperatures": temperatures,
         "soil_moisture": soil_moisture,
-        "evaporation": evaporation
+        "evaporation": evaporation,
     }
 
 
 def load_station_info(area, meteo_type, dir):
-    """
-    Load station info for a given area and type.
+    """Load station info for a given area and type.
 
-    Paramètres :
+    Args:
       area (str) : France or Brazil
       meteo_type (str) : Type of data (the key used in `datasets`)
-      dataset_dir (str) : Base directory containing the data
+      dir (str) : Base directory containing the data
 
     Returns :
       pd.DataFrame : DataFrame of stations with renamed columns
@@ -117,36 +114,34 @@ def load_station_info(area, meteo_type, dir):
     """
     path = f"{dir}{area}/{meteo_type}/waterflow/station_info.csv"
     df = pd.read_csv(path, sep=",")
-    df = df.rename(columns={
-        "Latitude": "latitude",
-        "Longitude": "longitude",
-        "catchment_area (km2)": "catchment",
-        "altitude (m)": "altitude",
-        "Catchment area (km²)": "catchment",
-        "Altitude (m ASL)": "altitude"
-    })
+    df = df.rename(
+        columns={
+            "Latitude": "latitude",
+            "Longitude": "longitude",
+            "catchment_area (km2)": "catchment",
+            "altitude (m)": "altitude",
+            "Catchment area (km²)": "catchment",
+            "Altitude (m ASL)": "altitude",
+        }
+    )
     return df
 
 
 def load_water_flows(area, meteo_type, dir):
-    """
-    Load water flows for a given area and type.
+    """Load water flows for a given area and type.
 
-    Paramètres :
-      area (str): France or Brazil
-      meteo_type (str): Type of data (the key used in `datasets`)
-      dataset_dir (str): Base directory containing the data
+    Args:
+      area (str) : France or Brazil
+      meteo_type (str) : Type of data (the key used in `datasets`)
+      dir (str) : Base directory containing the data
 
     Returns :
       pd.DataFrame : DataFrame of water flows with the 'ObsDate'
         column correctly formatted.
     """
-
     path = f"{dir}{area}/{meteo_type}/waterflow/waterflow_data.csv"
 
     wf = pd.read_csv(path, sep=",")
     wf = wf.rename(columns={"date": "ObsDate"})
-    wf['ObsDate'] = pd.to_datetime(
-        wf['ObsDate']
-    ).dt.tz_localize(None).dt.floor('d')
+    wf["ObsDate"] = pd.to_datetime(wf["ObsDate"]).dt.tz_localize(None).dt.floor("d")
     return wf
