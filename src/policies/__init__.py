@@ -1,7 +1,7 @@
 """
 Policy implementations for the Water Management Simulation.
 
-This package provides implementations of different policies for 
+This package provides implementations of different policies for
 the water management simulation, including:
 - Quota policies: Regulate how much water each actor can pump
 - Incentive policies: Provide fines or subsidies to influence actor behavior

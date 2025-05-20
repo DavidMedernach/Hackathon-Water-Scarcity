@@ -1,6 +1,7 @@
 import numpy as np
 import yaml
 
+
 def is_pareto_efficient(costs):
     """
     Find the Pareto-efficient points.
@@ -9,10 +10,13 @@ def is_pareto_efficient(costs):
     """
     is_efficient = np.ones(costs.shape[0], dtype=bool)
     for i, c in enumerate(costs):
-        is_efficient[i] = not np.any(np.all(costs <= c, axis=1) & np.any(costs < c, axis=1))
+        is_efficient[i] = not np.any(
+            np.all(costs <= c, axis=1) & np.any(costs < c, axis=1)
+        )
     return is_efficient
 
+
 def load_parameters_from_yaml(file_path: str) -> dict:
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         data = yaml.safe_load(file)
-    return data['parameters']
+    return data["parameters"]

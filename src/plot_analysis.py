@@ -17,119 +17,107 @@ import src.core as wms
 
 # Font sizes for consistent text across plots
 FONT_SIZES = {
-    'title': 20,        # Main title font size
-    'axis_label': 14,   # Axis labels font size
-    'legend': 11,       # Legend text font size
-    'tick': 12          # Tick labels font size
+    "title": 20,  # Main title font size
+    "axis_label": 14,  # Axis labels font size
+    "legend": 11,  # Legend text font size
+    "tick": 12,  # Tick labels font size
 }
 
 # Color schemes for different plot elements
 COLOR_SCHEMES = {
-    'actor': [
-        '#1f77b4',  # Blue
-        '#ff7f0e',  # Orange
-        '#2ca02c',  # Green
-        '#d62728',  # Red
-        '#9467bd',  # Purple
-        '#8c564b',  # Brown
-        '#e377c2',  # Pink
-        '#7f7f7f',  # Gray
-        '#bcbd22',  # Olive
-        '#17becf',  # Cyan
-        '#7570b3',  # Indigo
-        '#e7298a',  # Magenta
+    "actor": [
+        "#1f77b4",  # Blue
+        "#ff7f0e",  # Orange
+        "#2ca02c",  # Green
+        "#d62728",  # Red
+        "#9467bd",  # Purple
+        "#8c564b",  # Brown
+        "#e377c2",  # Pink
+        "#7f7f7f",  # Gray
+        "#bcbd22",  # Olive
+        "#17becf",  # Cyan
+        "#7570b3",  # Indigo
+        "#e7298a",  # Magenta
     ],
-    'data': {
+    "data": {
         # Flow data
-        'river_flow': '#33BBEE',   # Blue for river flow
-        'eco_threshold': '#E31A1C', # Red for ecological threshold
-        'remaining_water': '#33A02C', # Green for remaining water
-        'residual_water': '#FB9A99', # Light red for residual water
-        
+        "river_flow": "#33BBEE",  # Blue for river flow
+        "eco_threshold": "#E31A1C",  # Red for ecological threshold
+        "remaining_water": "#33A02C",  # Green for remaining water
+        "residual_water": "#FB9A99",  # Light red for residual water
         # Water usage
-        'h_water_used': '#1F78B4',  # Blue for water used
-        'h_water_pump': '#E31A1C',  # Red for water pumped
-        
+        "h_water_used": "#1F78B4",  # Blue for water used
+        "h_water_pump": "#E31A1C",  # Red for water pumped
         # Ecological impact
-        'w_ecol_impact': '#FF7F00',  # Orange for actual ecological impact
-        'w_min_ecol_impact': '#33A02C',  # Green for minimum ecological impact
-        'w_max_ecol_impact': '#E31A1C',  # Red for maximum ecological impact
-        'w_crisis': '#FB9A99',      # Light red for crisis levels
-        
+        "w_ecol_impact": "#FF7F00",  # Orange for actual ecological impact
+        "w_min_ecol_impact": "#33A02C",  # Green for minimum ecological impact
+        "w_max_ecol_impact": "#E31A1C",  # Red for maximum ecological impact
+        "w_crisis": "#FB9A99",  # Light red for crisis levels
         # Economic impact
-        'h_econ_impacts': '#1F78B4',    # Blue for actual economic impact
-        'h_max_econ_impacts': '#E31A1C', # Red for maximum economic impact
-        'h_min_econ_impacts': '#33A02C', # Green for minimum economic impact
-        
+        "h_econ_impacts": "#1F78B4",  # Blue for actual economic impact
+        "h_max_econ_impacts": "#E31A1C",  # Red for maximum economic impact
+        "h_min_econ_impacts": "#33A02C",  # Green for minimum economic impact
         # Actor behavior
-        'h_policies': '#FF7F00',    # Orange for policies
-        'h_tendencies': '#6A3D9A',  # Purple for tendencies
-        'h_actions': '#A6CEE3',     # Light blue for actions
-        'h_rewards': '#B2DF8A',     # Light green for rewards
-        'h_diff_rewards': '#FB9A99',# Light red for reward differences
-        
+        "h_policies": "#FF7F00",  # Orange for policies
+        "h_tendencies": "#6A3D9A",  # Purple for tendencies
+        "h_actions": "#A6CEE3",  # Light blue for actions
+        "h_rewards": "#B2DF8A",  # Light green for rewards
+        "h_diff_rewards": "#FB9A99",  # Light red for reward differences
         # Storage
-        'h_storage': '#6A3D9A',     # Purple for storage
-        'h_alt_storage': '#CAB2D6', # Light purple for alternative storage
-        
+        "h_storage": "#6A3D9A",  # Purple for storage
+        "h_alt_storage": "#CAB2D6",  # Light purple for alternative storage
         # Quotas and incentives
-        'h_quota': '#FDBF6F',       # Light orange for quotas
-        'h_fines': '#E31A1C',       # Red for fines
-        'h_subventions': '#33A02C', # Green for subventions
-        'h_taxed_incomes': '#B15928'# Brown for taxed incomes
-    }
+        "h_quota": "#FDBF6F",  # Light orange for quotas
+        "h_fines": "#E31A1C",  # Red for fines
+        "h_subventions": "#33A02C",  # Green for subventions
+        "h_taxed_incomes": "#B15928",  # Brown for taxed incomes
+    },
 }
 
 # Labels for different data types
 DATA_LABELS = {
     # Water flow
-    'river_flow': 'River Flow',
-    'eco_threshold': 'Ecological Threshold',
-    'remaining_water': 'Remaining Water',
-    
+    "river_flow": "River Flow",
+    "eco_threshold": "Ecological Threshold",
+    "remaining_water": "Remaining Water",
     # Water usage
-    'h_water_used': 'Water Used',
-    'h_water_pump': 'Water Pumped',
-    
+    "h_water_used": "Water Used",
+    "h_water_pump": "Water Pumped",
     # Ecological impact
-    'w_ecol_impact': 'Ecological Impact',
-    'w_min_ecol_impact': 'Min Ecological Impact',
-    'w_max_ecol_impact': 'Max Ecological Impact',
-    'w_crisis': 'Crisis Level',
-    
+    "w_ecol_impact": "Ecological Impact",
+    "w_min_ecol_impact": "Min Ecological Impact",
+    "w_max_ecol_impact": "Max Ecological Impact",
+    "w_crisis": "Crisis Level",
     # Economic impact
-    'h_econ_impacts': 'Economic Impacts',
-    'h_max_econ_impacts': 'Max Economic Impacts',
-    'h_min_econ_impacts': 'Sustainable Economic Impacts',
-    
+    "h_econ_impacts": "Economic Impacts",
+    "h_max_econ_impacts": "Max Economic Impacts",
+    "h_min_econ_impacts": "Sustainable Economic Impacts",
     # Actor behavior
-    'h_policies': 'Policies',
-    'h_tendencies': 'Proportion of Cooperators',
-    'h_actions': 'Actions (1=Cooperate, 0=Defect)',
-    'h_rewards': 'Rewards',
-    'h_diff_rewards': 'Reward Differences',
-    
+    "h_policies": "Policies",
+    "h_tendencies": "Proportion of Cooperators",
+    "h_actions": "Actions (1=Cooperate, 0=Defect)",
+    "h_rewards": "Rewards",
+    "h_diff_rewards": "Reward Differences",
     # Storage
-    'h_storage': 'Storage',
-    'h_alt_storage': 'Alternative Storage',
-    
+    "h_storage": "Storage",
+    "h_alt_storage": "Alternative Storage",
     # Quotas and incentives
-    'h_quota': 'Quota',
-    'h_fines': 'Fines',
-    'h_subventions': 'Subventions',
-    'h_taxed_incomes': 'Taxed Incomes'
+    "h_quota": "Quota",
+    "h_fines": "Fines",
+    "h_subventions": "Subventions",
+    "h_taxed_incomes": "Taxed Incomes",
 }
 
 # Plot titles (if different from labels)
 PLOT_TITLES = {
-    'h_econ_impacts': 'Economic Impacts',
-    'h_max_econ_impacts': 'Maximum Economic Impacts',
-    'h_min_econ_impacts': 'Sustainable Economic Impacts',
-    'h_tendencies': 'Cooperation Tendencies',
-    'h_actions': 'Actor Actions',
-    'w_crisis': 'Crisis Levels',
-    'h_water_used': 'Water Used by Actors',
-    'h_water_pump': 'Water Pumped by Actors'
+    "h_econ_impacts": "Economic Impacts",
+    "h_max_econ_impacts": "Maximum Economic Impacts",
+    "h_min_econ_impacts": "Sustainable Economic Impacts",
+    "h_tendencies": "Cooperation Tendencies",
+    "h_actions": "Actor Actions",
+    "w_crisis": "Crisis Levels",
+    "h_water_used": "Water Used by Actors",
+    "h_water_pump": "Water Pumped by Actors",
 }
 
 
@@ -137,34 +125,35 @@ PLOT_TITLES = {
 # Helper Functions
 # =====================================================================
 
+
 def get_color(data_type: str) -> str:
     """
     Get the color associated with a specific data type.
-    
+
     Parameters:
     -----------
     data_type : str
         The data type identifier
-        
+
     Returns:
     --------
     str
         Color code for the data type
     """
-    if data_type in COLOR_SCHEMES['data']:
-        return COLOR_SCHEMES['data'][data_type]
+    if data_type in COLOR_SCHEMES["data"]:
+        return COLOR_SCHEMES["data"][data_type]
     return "#000000"  # Default to black if not found
 
 
 def get_label(data_type: str) -> str:
     """
     Get the display label for a specific data type.
-    
+
     Parameters:
     -----------
     data_type : str
         The data type identifier
-        
+
     Returns:
     --------
     str
@@ -178,12 +167,12 @@ def get_label(data_type: str) -> str:
 def get_title(data_type: str) -> str:
     """
     Get the plot title for a specific data type.
-    
+
     Parameters:
     -----------
     data_type : str
         The data type identifier
-        
+
     Returns:
     --------
     str
@@ -196,10 +185,12 @@ def get_title(data_type: str) -> str:
     return data_type.replace("_", " ").title()
 
 
-def apply_common_style(ax, title=None, xlabel=None, ylabel=None, legend=True, legend_title=None):
+def apply_common_style(
+    ax, title=None, xlabel=None, ylabel=None, legend=True, legend_title=None
+):
     """
     Apply consistent styling to a plot.
-    
+
     Parameters:
     -----------
     ax : matplotlib.axes.Axes
@@ -217,20 +208,20 @@ def apply_common_style(ax, title=None, xlabel=None, ylabel=None, legend=True, le
     """
     # Set title if provided
     if title:
-        ax.set_title(title, fontsize=FONT_SIZES['title'])
-    
+        ax.set_title(title, fontsize=FONT_SIZES["title"])
+
     # Set axis labels if provided
     if xlabel:
-        ax.set_xlabel(xlabel, fontsize=FONT_SIZES['axis_label'])
+        ax.set_xlabel(xlabel, fontsize=FONT_SIZES["axis_label"])
     if ylabel:
-        ax.set_ylabel(ylabel, fontsize=FONT_SIZES['axis_label'])
-    
+        ax.set_ylabel(ylabel, fontsize=FONT_SIZES["axis_label"])
+
     # Set tick label font sizes
-    ax.tick_params(axis='both', which='major', labelsize=FONT_SIZES['tick'])
-    
+    ax.tick_params(axis="both", which="major", labelsize=FONT_SIZES["tick"])
+
     # Add grid
-    ax.grid(True, alpha=0.3, linestyle='-')
-    
+    ax.grid(True, alpha=0.3, linestyle="-")
+
     # Format legend if needed
     if legend:
         handles, labels = ax.get_legend_handles_labels()
@@ -238,27 +229,27 @@ def apply_common_style(ax, title=None, xlabel=None, ylabel=None, legend=True, le
             leg = ax.legend(
                 handles=handles,
                 labels=labels,
-                fontsize=FONT_SIZES['legend'],
+                fontsize=FONT_SIZES["legend"],
                 frameon=True,
                 framealpha=0.8,
-                facecolor='white',
-                edgecolor='gray'
+                facecolor="white",
+                edgecolor="gray",
             )
             if legend_title:
-                leg.set_title(legend_title, prop={'size': FONT_SIZES['legend'] + 1})
+                leg.set_title(legend_title, prop={"size": FONT_SIZES["legend"] + 1})
 
 
 # =====================================================================
 # Data Extraction Functions
 # =====================================================================
 
-def get_h_data(simulation: wms,
-               data_type: str,
-               mode: str = "sum",
-               by_type: bool = False) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+
+def get_h_data(
+    simulation: wms, data_type: str, mode: str = "sum", by_type: bool = False
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
     Extract and process h_* data from simulation.
-    
+
     Parameters:
     -----------
     simulation : wms
@@ -269,7 +260,7 @@ def get_h_data(simulation: wms,
         Processing mode: "sum", "mean", or "actors"
     by_type : bool
         Whether to group actors by type
-        
+
     Returns:
     --------
     Tuple[np.ndarray, np.ndarray, np.ndarray]
@@ -277,18 +268,20 @@ def get_h_data(simulation: wms,
     """
     # Get raw data (shape: actors, runs, turns)
     data = simulation.get_data(data_type)
-    
+
     # Process by actor type if requested
     if by_type:
         # Get unique actor types
         types = np.unique(simulation.actors_type)
         per_type = []
-        
+
         # Process each type separately
         for t in types:
             # Select only actors of this type
-            sel = data[simulation.actors_type == t, :, :]  # shape: (actors_of_type, runs, turns)
-            
+            sel = data[
+                simulation.actors_type == t, :, :
+            ]  # shape: (actors_of_type, runs, turns)
+
             # Apply aggregation mode
             if mode in ("sum", "actors_sum"):
                 # Sum over actors axis → shape: (runs, turns)
@@ -298,28 +291,28 @@ def get_h_data(simulation: wms,
                 arr = sel.mean(axis=0)
             else:
                 raise ValueError(f"Unknown mode={mode!r} for by_type")
-            
+
             per_type.append(arr)
-        
+
         # Stack types into shape: (types, runs, turns)
         arr = np.stack(per_type, axis=0)
-        
+
         # Compute statistics over runs axis → shape: (types, turns)
         mean = arr.mean(axis=1)
         q_up = np.quantile(arr, 0.9, axis=1)
         q_down = np.quantile(arr, 0.1, axis=1)
-        
+
         # Fix cases where quantiles are outside the range of data
         # This can happen with skewed distributions
         for i in range(mean.shape[0]):
             q_up[i] = np.maximum(q_up[i], mean[i])
             q_down[i] = np.minimum(q_down[i], mean[i])
-        
+
         return mean, q_up, q_down
-    
+
     # Process without type grouping
     axis = 0  # Default aggregation axis
-    
+
     # Apply aggregation mode
     if mode == "sum":
         data = data.sum(axis=0)  # Sum over actors → shape: (runs, turns)
@@ -327,12 +320,12 @@ def get_h_data(simulation: wms,
         data = data.mean(axis=0)  # Mean over actors → shape: (runs, turns)
     elif mode == "actors":
         axis = 1  # Keep actors dimension, aggregate over runs
-    
+
     # Compute statistics over appropriate axis
     mean = data.mean(axis=axis)
     q_up = np.quantile(data, 0.9, axis=axis)
     q_down = np.quantile(data, 0.1, axis=axis)
-    
+
     # Fix cases where quantiles are outside the range of data
     if axis == 0:  # Single mean series
         q_up = np.maximum(q_up, mean)
@@ -341,16 +334,16 @@ def get_h_data(simulation: wms,
         for i in range(mean.shape[0]):
             q_up[i] = np.maximum(q_up[i], mean[i])
             q_down[i] = np.minimum(q_down[i], mean[i])
-    
+
     return mean, q_up, q_down
 
 
-def get_w_data(simulation: wms,
-               data_type: str,
-               mode: str = "mean") -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def get_w_data(
+    simulation: wms, data_type: str, mode: str = "mean"
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
     Extract and process w_* data from simulation.
-    
+
     Parameters:
     -----------
     simulation : wms
@@ -359,7 +352,7 @@ def get_w_data(simulation: wms,
         The data type to extract (must start with 'w_')
     mode : str
         Processing mode (currently only "mean" is supported)
-        
+
     Returns:
     --------
     Tuple[np.ndarray, np.ndarray, np.ndarray]
@@ -367,16 +360,16 @@ def get_w_data(simulation: wms,
     """
     # Get raw data (shape: runs, turns)
     data = simulation.get_data(data_type)
-    
+
     # Compute statistics over runs axis
     mean = np.mean(data, axis=0)
     q_up = np.quantile(data, 0.8, axis=0)
     q_down = np.quantile(data, 0.2, axis=0)
-    
+
     # Fix cases where quantiles are outside the range of data
     q_up = np.maximum(q_up, mean)
     q_down = np.minimum(q_down, mean)
-    
+
     return mean, q_up, q_down
 
 
@@ -384,15 +377,18 @@ def get_w_data(simulation: wms,
 # Core Plotting Functions
 # =====================================================================
 
-def plot_data(ax: plt.Axes,
-              x_values: np.ndarray,
-              simulation: wms,
-              data_type: str,
-              mode: str = "sum",
-              ylim: Optional[Tuple[float, float]] = None) -> None:
+
+def plot_data(
+    ax: plt.Axes,
+    x_values: np.ndarray,
+    simulation: wms,
+    data_type: str,
+    mode: str = "sum",
+    ylim: Optional[Tuple[float, float]] = None,
+) -> None:
     """
     Plot the mean and confidence interval of a data series.
-    
+
     Parameters:
     -----------
     ax : plt.Axes
@@ -415,39 +411,36 @@ def plot_data(ax: plt.Axes,
         mean, q_up, q_down = get_h_data(simulation, data_type, mode)
     else:
         raise ValueError(f"Unknown data type prefix: {data_type}")
-    
+
     # Get color, label, and title
     color = get_color(data_type)
     label = get_label(data_type)
     title = get_title(data_type)
-    
+
     # Plot mean line
     ax.plot(x_values, mean, label=label, color=color, linewidth=2)
-    
+
     # Add confidence interval
     ax.fill_between(x_values, q_down, q_up, alpha=0.2, color=color)
-    
+
     # Apply styling
-    apply_common_style(
-        ax,
-        title=title,
-        xlabel='Turn (Week)',
-        ylabel=label
-    )
-    
+    apply_common_style(ax, title=title, xlabel="Turn (Week)", ylabel=label)
+
     # Set y-axis limits if provided
     if ylim is not None:
         ax.set_ylim(ylim)
 
 
-def plot_actor_data(ax: plt.Axes,
-                   x_values: np.ndarray,
-                   simulation: wms,
-                   data_type: str,
-                   ylim: Optional[Tuple[float, float]] = None) -> None:
+def plot_actor_data(
+    ax: plt.Axes,
+    x_values: np.ndarray,
+    simulation: wms,
+    data_type: str,
+    ylim: Optional[Tuple[float, float]] = None,
+) -> None:
     """
     Plot data for each actor individually.
-    
+
     Parameters:
     -----------
     ax : plt.Axes
@@ -464,52 +457,54 @@ def plot_actor_data(ax: plt.Axes,
     # Check data type
     if not data_type.startswith("h_"):
         raise ValueError(f"Actor data must be h_* type, got {data_type}")
-    
+
     # Get the number of actors and their labels
     nb_actors = simulation.nb_actors
     actor_labels = simulation.actors_name
-    
+
     # Get data for each actor
     mean, q_up, q_down = get_h_data(simulation, data_type, mode="actors")
-    
+
     # Get label and title
     title = get_title(data_type)
     ylabel = get_label(data_type)
-    
+
     # Plot data for each actor
     for i in range(nb_actors):
-        color = COLOR_SCHEMES['actor'][i % len(COLOR_SCHEMES['actor'])]
-        label = f'Actor {i + 1} ({actor_labels[i]})'
-        
+        color = COLOR_SCHEMES["actor"][i % len(COLOR_SCHEMES["actor"])]
+        label = f"Actor {i + 1} ({actor_labels[i]})"
+
         # Plot mean line
         ax.plot(x_values, mean[i], label=label, color=color, linewidth=1.8)
-        
+
         # Add confidence interval
         ax.fill_between(x_values, q_down[i], q_up[i], alpha=0.15, color=color)
-    
+
     # Apply styling
     apply_common_style(
         ax,
         title=f"{title} by Actor",
-        xlabel='Turn (Week)',
+        xlabel="Turn (Week)",
         ylabel=ylabel,
-        legend_title="Actors"
+        legend_title="Actors",
     )
-    
+
     # Set y-axis limits if provided
     if ylim is not None:
         ax.set_ylim(ylim)
 
 
-def plot_actor_data_by_type(ax: plt.Axes,
-                           x_values: np.ndarray,
-                           simulation: wms,
-                           data_type: str,
-                           mode: str = "actors_sum",
-                           ylim: Optional[Tuple[float, float]] = None) -> None:
+def plot_actor_data_by_type(
+    ax: plt.Axes,
+    x_values: np.ndarray,
+    simulation: wms,
+    data_type: str,
+    mode: str = "actors_sum",
+    ylim: Optional[Tuple[float, float]] = None,
+) -> None:
     """
     Plot data aggregated by actor type.
-    
+
     Parameters:
     -----------
     ax : plt.Axes
@@ -528,54 +523,56 @@ def plot_actor_data_by_type(ax: plt.Axes,
     # Check data type
     if not data_type.startswith("h_"):
         raise ValueError(f"Actor data must be h_* type, got {data_type}")
-    
+
     # Get unique actor types
     types = np.unique(simulation.actors_type)
-    
+
     # Get data aggregated by type
     mean, q_up, q_down = get_h_data(simulation, data_type, mode=mode, by_type=True)
-    
+
     # Get label and title
     title = get_title(data_type)
     ylabel = get_label(data_type)
-    
+
     # Plot data for each actor type
     for i, t in enumerate(types):
-        color = COLOR_SCHEMES['actor'][i % len(COLOR_SCHEMES['actor'])]
+        color = COLOR_SCHEMES["actor"][i % len(COLOR_SCHEMES["actor"])]
         label = f'Type "{t}"'
-        
+
         # Plot mean line
         ax.plot(x_values, mean[i], label=label, color=color, linewidth=2)
-        
+
         # Add confidence interval
         ax.fill_between(x_values, q_down[i], q_up[i], alpha=0.2, color=color)
-    
+
     # Apply styling
     apply_common_style(
         ax,
         title=f"{title} by Actor Type",
-        xlabel='Turn (Week)',
+        xlabel="Turn (Week)",
         ylabel=ylabel,
-        legend_title="Actor Types"
+        legend_title="Actor Types",
     )
-    
+
     # Set y-axis limits if provided
     if ylim is not None:
         ax.set_ylim(ylim)
 
 
-def compare_data(ax: plt.Axes,
-                x_values: np.ndarray,
-                cols: List[str],
-                simulation: wms,
-                xlabel: str = 'Turn (Week)',
-                ylabel: str = '',
-                title: str = '',
-                ylim: Optional[Tuple[float, float]] = None,
-                cumulative: bool = False) -> None:
+def compare_data(
+    ax: plt.Axes,
+    x_values: np.ndarray,
+    cols: List[str],
+    simulation: wms,
+    xlabel: str = "Turn (Week)",
+    ylabel: str = "",
+    title: str = "",
+    ylim: Optional[Tuple[float, float]] = None,
+    cumulative: bool = False,
+) -> None:
     """
     Compare multiple data series on the same plot.
-    
+
     Parameters:
     -----------
     ax : plt.Axes
@@ -606,35 +603,29 @@ def compare_data(ax: plt.Axes,
             mean, q_up, q_down = get_h_data(simulation, col, "mean")
         else:
             raise ValueError(f"Unknown data type prefix: {col}")
-        
+
         # Apply cumulative sum if requested
         if cumulative:
             mean = np.cumsum(mean)
             q_up = np.cumsum(q_up)
             q_down = np.cumsum(q_down)
-        
+
         # Get label and color
         label = get_label(col)
         color = get_color(col)
-        
+
         # Plot mean line
         ax.plot(x_values, mean, label=label, color=color, linewidth=2)
-        
+
         # Add confidence interval
         ax.fill_between(x_values, q_down, q_up, alpha=0.2, color=color)
-    
+
     # Apply styling
-    apply_common_style(
-        ax,
-        title=title,
-        xlabel=xlabel,
-        ylabel=ylabel
-    )
-    
+    apply_common_style(ax, title=title, xlabel=xlabel, ylabel=ylabel)
+
     # Set y-axis limits if provided
     if ylim is not None:
         ax.set_ylim(ylim)
-
 
 
 def plot_river_flow(
@@ -642,7 +633,7 @@ def plot_river_flow(
     weeks: np.ndarray,
     simulation: wms,
     ylim: tuple = None,
-    xlim: tuple = None
+    xlim: tuple = None,
 ) -> None:
     """
     Top panel: river flow, each actor’s weekly demand, and the DOE/DCR thresholds.
@@ -665,7 +656,7 @@ def plot_river_flow(
     DCR = simulation.DCR
     actor_labels = simulation.actors_name
     actor_demands = simulation.actors_demands
-    actor_colors = COLOR_SCHEMES['actor']
+    actor_colors = COLOR_SCHEMES["actor"]
     river_flow = simulation.real_riverflows[weeks]
     # pronounced y=0 axis
     ax.axhline(0, color="black", linewidth=2)
@@ -677,10 +668,12 @@ def plot_river_flow(
     for i, (lbl, d) in enumerate(zip(actor_labels, actor_demands)):
         ax.hlines(
             d,
-            weeks[0], weeks[-1],
+            weeks[0],
+            weeks[-1],
             color=actor_colors[i % len(actor_colors)],
-            ls="--", lw=1.8,
-            label=f"Demand – {lbl}"
+            ls="--",
+            lw=1.8,
+            label=f"Demand – {lbl}",
         )
 
     # DOE & DCR
@@ -703,7 +696,7 @@ def plot_remaining_water(
     weeks: np.ndarray,
     simulation: wms,
     ylim: tuple = None,
-    xlim: tuple = None
+    xlim: tuple = None,
 ) -> None:
     """
     Bottom panel: water remaining after ecological thresholds and after meeting all demands.
@@ -725,7 +718,7 @@ def plot_remaining_water(
     DCR = simulation.DCR
     actor_labels = simulation.actors_name
     actor_demands = simulation.actors_demands
-    actor_colors = COLOR_SCHEMES['actor']
+    actor_colors = COLOR_SCHEMES["actor"]
     river_flow = simulation.real_riverflows[weeks]
     # pronounced y=0 axis
     ax.axhline(0, color="black", linewidth=2)
@@ -745,9 +738,13 @@ def plot_remaining_water(
     deficit = residual < 0
     if deficit.any():
         ax.fill_between(
-            weeks, residual, 0,
-            where=deficit, color="red", alpha=0.2,
-            label="Ecological deficit"
+            weeks,
+            residual,
+            0,
+            where=deficit,
+            color="red",
+            alpha=0.2,
+            label="Ecological deficit",
         )
 
     ax.set_title("Available Water after Thresholds & Demands")
