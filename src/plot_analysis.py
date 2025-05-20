@@ -241,14 +241,14 @@ def apply_common_style(
 def get_h_data(
     simulation: wms, data_type: str, mode: str = "sum", by_type: bool = False
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Extract and process h_* data from simulation.
+    """Extract and process ``h_`` (2D history) data from simulation.
 
     Parameters:
     -----------
     simulation : wms
         Simulation object
     data_type : str
-        The data type to extract (must start with 'h_')
+        The data type to extract (must start with ``h_``)
     mode : str
         Processing mode: "sum", "mean", or "actors"
     by_type : bool
@@ -334,14 +334,14 @@ def get_h_data(
 def get_w_data(
     simulation: wms, data_type: str, mode: str = "mean"
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Extract and process w_* data from simulation.
+    """Extract and process ``w_`` data 1D history from simulation.
 
     Parameters:
     -----------
     simulation : wms
         Simulation object
     data_type : str
-        The data type to extract (must start with 'w_')
+        The data type to extract (must start with ``w_``)
     mode : str
         Processing mode (currently only "mean" is supported)
 
@@ -440,7 +440,7 @@ def plot_actor_data(
     simulation : wms
         Simulation object containing the data
     data_type : str
-        Type of data to plot (must start with 'h_')
+        Type of data to plot (must start with ``h_``)
     ylim : Tuple[float, float], optional
         Y-axis limits
     """
@@ -503,7 +503,7 @@ def plot_actor_data_by_type(
     simulation : wms
         Simulation object containing the data
     data_type : str
-        Type of data to plot (must start with 'h_')
+        Type of data to plot (must start with ``h_``)
     mode : str, optional
         Aggregation mode: "actors_sum" or "actors_mean"
     ylim : Tuple[float, float], optional

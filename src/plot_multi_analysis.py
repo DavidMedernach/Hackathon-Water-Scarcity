@@ -229,7 +229,7 @@ def analyze_scenario_impacts(results_df, ylim=None, xlim=None, is_scalled=False)
     Analyze impacts across different scenarios, stations, and scarcity levels
     with improved visualization aesthetics.
 
-    Parameters:
+    Parameters
     -----------
     results_df : pd.DataFrame
         DataFrame containing simulation results with ecological_impact, economic_impact,
@@ -240,10 +240,10 @@ def analyze_scenario_impacts(results_df, ylim=None, xlim=None, is_scalled=False)
         X-axis limits for the plots
     is_scalled : bool, optional
         If True, use scaled impact values; otherwise, use raw values
-    Returns:
+
+    Returns
     --------
-    None
-        Displays visualizations showing impact relationships
+        None
     """
     # 1. Analysis by scarcity level
     create_impact_by_category_plot(
