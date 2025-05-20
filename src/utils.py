@@ -4,12 +4,12 @@ import yaml
 
 
 def is_pareto_efficient(costs):
-    """
-    Find the Pareto-efficient points.
+    """Find the Pareto-efficient points.
 
     Args:
         costs (np.ndarray): Array of shape (n_points, n_objectives) representing
                             the cost of each point.
+
     Returns:
         np.ndarray: Boolean array indicating whether each point is Pareto-efficient.
     """
@@ -22,11 +22,11 @@ def is_pareto_efficient(costs):
 
 
 def load_parameters_from_yaml(file_path: str) -> dict:
-    """
-    Load parameters from a YAML file.
+    """Load parameters from a YAML file.
 
     Args:
         file_path (str): Path to the YAML file.
+        
     Returns:
         dict: Dictionary containing the parameters.
     """

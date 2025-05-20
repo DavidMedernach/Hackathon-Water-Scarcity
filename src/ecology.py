@@ -1,5 +1,4 @@
-"""
-Ecology module for the Water Management Simulation.
+"""Ecology module for the Water Management Simulation.
 
 This module handles all ecology-related functionality including:
 - River flow calculations
@@ -13,8 +12,7 @@ from typing import List, Tuple
 
 
 class EcologyManager:
-    """
-    Manages ecological aspects of the water management simulation.
+    """Manages ecological aspects of the water management simulation.
 
     This class handles river flow calculations, ecological impact assessments,
     and final score calculations for the simulation.
@@ -24,8 +22,7 @@ class EcologyManager:
     """
 
     def __init__(self, simulation):
-        """
-        Initialize the ecology manager.
+        """Initialize the ecology manager.
 
         Args:
             simulation: The parent simulation instance.
@@ -33,8 +30,7 @@ class EcologyManager:
         self.sim = simulation
 
     def calculate_riverflow(self, turn: int) -> float:
-        """
-        Calculate the river flow for a given turn.
+        """Calculate the river flow for a given turn.
 
         Models the river flow as a sinusoidal function with random variation
         or uses real data if available.
@@ -56,8 +52,7 @@ class EcologyManager:
             return self.sim.real_riverflows[turn]
 
     def compute_crisis(self) -> int:
-        """
-        Determine the crisis level based on the river flow.
+        """Determine the crisis level based on the river flow.
 
         Calculates the current crisis level based on how the river flow compares to
         the DOE (ecological optimal flow) and DCR (crisis flow threshold).
@@ -94,8 +89,7 @@ class EcologyManager:
         return crisis
 
     def compute_ecol_impacts(self) -> None:
-        """
-        Compute ecological impacts based on river flow and water usage.
+        """Compute ecological impacts based on river flow and water usage.
 
         Calculates actual, minimum, and maximum ecological impacts and stores them
         in the respective history arrays.
@@ -119,8 +113,7 @@ class EcologyManager:
     def _compute_class_sats(
         self, high_idxs: np.ndarray, medium_idxs: np.ndarray, low_idxs: np.ndarray
     ) -> Tuple[float, float]:
-        """
-        Compute the mean satisfaction ratio for different priority classes.
+        """Compute the mean satisfaction ratio for different priority classes.
 
         Calculates how well actors' water demands were met across the simulation,
         grouped by their priority levels.
@@ -150,8 +143,7 @@ class EcologyManager:
         return high_sat, med_sat, low_sat
 
     def calculate_final_scores(self) -> List[float]:
-        """
-        Calculate final normalized scores for the simulation.
+        """Calculate final normalized scores for the simulation.
 
         Computes ecological breach and economic impact scores scaled to the best
         possible outcomes, and enforces a constraint that medium-priority actors

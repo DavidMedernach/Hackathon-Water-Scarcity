@@ -16,8 +16,7 @@ def mixed_policy(
     DOE=15,
     DCR=10,
 ) -> np.ndarray:
-    """
-    Mixed policy.
+    """Mixed policy.
 
     This policy combines fine, subvention, and no policy approaches based on the actions
     taken by the actors and the current state of the system.
@@ -33,6 +32,7 @@ def mixed_policy(
         quota (np.ndarray): Quota assigned to each actor.
         DOE (int): Ecological optimal flow. Default is 15.
         DCR (int): Crisis flow threshold. Default is 10.
+        
     Returns:
         np.ndarray: Adjusted actions based on the mixed policy.
     """
@@ -53,8 +53,7 @@ def fine_policy(
     DOE=15,
     DCR=10,
 ) -> np.ndarray:
-    """
-    Fine policy.
+    """Fine policy.
 
     This policy applies a fine to the actors based on their cooperation.
 
@@ -69,6 +68,7 @@ def fine_policy(
         quota (np.ndarray): Quota assigned to each actor.
         DOE (int): Ecological optimal flow. Default is 15.
         DCR (int): Crisis flow threshold. Default is 10.
+
     Returns:
         np.ndarray: Adjusted actions based on the fine policy.
     """
@@ -89,8 +89,7 @@ def subvention_policy(
     DOE=15,
     DCR=10,
 ) -> np.ndarray:
-    """
-    Subvention policy.
+    """Subvention policy.
 
     This policy applies a subvention to the actors based on their cooperation.
     Args:
@@ -104,6 +103,7 @@ def subvention_policy(
         quota (np.ndarray): Quota assigned to each actor.
         DOE (int): Ecological optimal flow. Default is 15.
         DCR (int): Crisis flow threshold. Default is 10.
+
     Returns:
         np.ndarray: Adjusted actions based on the subvention policy.
     """
@@ -124,9 +124,8 @@ def no_policy(
     DOE=15,
     DCR=10,
 ) -> np.ndarray:
-    """
-    No policy.
-    
+    """No policy.
+
     This policy does not apply any incentives or penalties to the actors.
     Args:
         actions (np.ndarray): Actions taken by the actors.
@@ -139,6 +138,7 @@ def no_policy(
         quota (np.ndarray): Quota assigned to each actor.
         DOE (int): Ecological optimal flow. Default is 15.
         DCR (int): Crisis flow threshold. Default is 10.
+
     Returns:
         np.ndarray: No adjustment to actions.
     """

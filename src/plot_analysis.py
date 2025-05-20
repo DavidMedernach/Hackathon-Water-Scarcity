@@ -1,5 +1,4 @@
-"""
-Plot Analysis Module for Water Management Simulation.
+"""Plot Analysis Module for Water Management Simulation.
 
 This module provides visualization functions for analyzing simulation results,
 including river flows, actor behaviors, ecological impacts, and economic outcomes.
@@ -126,8 +125,7 @@ PLOT_TITLES = {
 
 
 def get_color(data_type: str) -> str:
-    """
-    Get the color associated with a specific data type.
+    """Get the color associated with a specific data type.
 
     Parameters:
     -----------
@@ -145,8 +143,7 @@ def get_color(data_type: str) -> str:
 
 
 def get_label(data_type: str) -> str:
-    """
-    Get the display label for a specific data type.
+    """Get the display label for a specific data type.
 
     Parameters:
     -----------
@@ -164,8 +161,7 @@ def get_label(data_type: str) -> str:
 
 
 def get_title(data_type: str) -> str:
-    """
-    Get the plot title for a specific data type.
+    """Get the plot title for a specific data type.
 
     Parameters:
     -----------
@@ -187,8 +183,7 @@ def get_title(data_type: str) -> str:
 def apply_common_style(
     ax, title=None, xlabel=None, ylabel=None, legend=True, legend_title=None
 ):
-    """
-    Apply consistent styling to a plot.
+    """Apply consistent styling to a plot.
 
     Parameters:
     -----------
@@ -246,8 +241,7 @@ def apply_common_style(
 def get_h_data(
     simulation: wms, data_type: str, mode: str = "sum", by_type: bool = False
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """
-    Extract and process h_* data from simulation.
+    """Extract and process h_* data from simulation.
 
     Parameters:
     -----------
@@ -340,8 +334,7 @@ def get_h_data(
 def get_w_data(
     simulation: wms, data_type: str, mode: str = "mean"
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """
-    Extract and process w_* data from simulation.
+    """Extract and process w_* data from simulation.
 
     Parameters:
     -----------
@@ -385,8 +378,7 @@ def plot_data(
     mode: str = "sum",
     ylim: Optional[Tuple[float, float]] = None,
 ) -> None:
-    """
-    Plot the mean and confidence interval of a data series.
+    """Plot the mean and confidence interval of a data series.
 
     Parameters:
     -----------
@@ -437,8 +429,7 @@ def plot_actor_data(
     data_type: str,
     ylim: Optional[Tuple[float, float]] = None,
 ) -> None:
-    """
-    Plot data for each actor individually.
+    """Plot data for each actor individually.
 
     Parameters:
     -----------
@@ -501,8 +492,7 @@ def plot_actor_data_by_type(
     mode: str = "actors_sum",
     ylim: Optional[Tuple[float, float]] = None,
 ) -> None:
-    """
-    Plot data aggregated by actor type.
+    """Plot data aggregated by actor type.
 
     Parameters:
     -----------
@@ -569,8 +559,7 @@ def compare_data(
     ylim: Optional[Tuple[float, float]] = None,
     cumulative: bool = False,
 ) -> None:
-    """
-    Compare multiple data series on the same plot.
+    """Compare multiple data series on the same plot.
 
     Parameters:
     -----------
@@ -634,8 +623,7 @@ def plot_river_flow(
     ylim: tuple = None,
     xlim: tuple = None,
 ) -> None:
-    """
-    Top panel: river flow, each actor’s weekly demand, and the DOE/DCR thresholds.
+    """Top panel: river flow, each actor’s weekly demand, and the DOE/DCR thresholds.
 
     Parameters
     ----------
@@ -696,8 +684,7 @@ def plot_remaining_water(
     ylim: tuple = None,
     xlim: tuple = None,
 ) -> None:
-    """
-    Bottom panel: water remaining after ecological thresholds and after meeting all demands.
+    """Bottom panel: water remaining after ecological thresholds and after meeting all demands.
 
     Parameters
     ----------

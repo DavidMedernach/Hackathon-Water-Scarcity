@@ -1,5 +1,4 @@
-"""
-Water Management Analysis Module.
+"""Water Management Analysis Module.
 
 This module provides visualization and analysis functions for water allocation
 simulation results. It includes tools for analyzing the relationships between
@@ -83,8 +82,7 @@ COLOR_SCHEMES = {
 
 
 def create_styled_legend(ax, handles, labels, title, position=None, ncol=1):
-    """
-    Create a consistently styled legend.
+    """Create a consistently styled legend.
 
     Parameters:
     -----------
@@ -139,8 +137,7 @@ def create_styled_legend(ax, handles, labels, title, position=None, ncol=1):
 
 
 def add_impact_plot_elements(ax, results_df=None):
-    """
-    Add common elements to impact plots like diagonal line and best/worst regions.
+    """Add common elements to impact plots like diagonal line and best/worst regions.
 
     Parameters:
     -----------
@@ -227,8 +224,7 @@ def add_impact_plot_elements(ax, results_df=None):
 
 
 def analyze_scenario_impacts(results_df, ylim=None, xlim=None, is_scalled=False):
-    """
-    Visualize and analyze the impacts of different scenarios.
+    """Visualize and analyze the impacts of different scenarios.
 
     Analyze impacts across different scenarios, stations, and scarcity levels
     with improved visualization aesthetics.
@@ -300,8 +296,7 @@ def analyze_scenario_impacts(results_df, ylim=None, xlim=None, is_scalled=False)
 
 
 def analyze_forecast_effects(results_df, is_scalled=False):
-    """
-    Analyze the effects of forecast bias and uncertainty on simulation outcomes.
+    """Analyze the effects of forecast bias and uncertainty on simulation outcomes.
 
     Creates matrix of plots showing relationships between bias, uncertainty,
     and impact measures.
@@ -310,6 +305,8 @@ def analyze_forecast_effects(results_df, is_scalled=False):
     -----------
     results_df : pd.DataFrame
         DataFrame containing simulation results
+    is_scalled : bool, optional
+        If True, use scaled impact values; otherwise, use raw values
 
     Returns:
     --------
@@ -465,8 +462,7 @@ def analyze_forecast_effects(results_df, is_scalled=False):
 
 
 def correlation_analysis(results_df, is_scalled=False):
-    """
-    Correlation analysis.
+    """Correlation analysis.
 
     Perform targeted correlation analysis focusing on relationships between
     input parameters and simulation outcomes.
@@ -517,8 +513,7 @@ def correlation_analysis(results_df, is_scalled=False):
 
 
 def calculate_input_output_correlation(input_df, output_df):
-    """
-    Calculate correlation between input variables and output metrics.
+    """Calculate correlation between input variables and output metrics.
 
     Parameters:
     -----------
@@ -551,8 +546,7 @@ def calculate_input_output_correlation(input_df, output_df):
 
 
 def plot_input_output_correlation_heatmap(correlation_matrix, min_correlation=0.05):
-    """
-    Plot a heatmap of correlations between inputs and outputs.
+    """Plot a heatmap of correlations between inputs and outputs.
 
     Parameters:
     -----------
@@ -592,8 +586,7 @@ def plot_input_output_correlation_heatmap(correlation_matrix, min_correlation=0.
 
 
 def print_top_correlations(correlation_matrix, top_n=5):
-    """
-    Print the top positive and negative correlations for each output variable.
+    """Print the top positive and negative correlations for each output variable.
 
     Parameters:
     -----------
@@ -620,8 +613,7 @@ def print_top_correlations(correlation_matrix, top_n=5):
 
 
 def plot_key_numeric_relationships(results_df, input_vars, output_vars):
-    """
-    Create scatter plots for key numeric relationships.
+    """Create scatter plots for key numeric relationships.
 
     Parameters:
     -----------
@@ -686,8 +678,7 @@ def plot_key_numeric_relationships(results_df, input_vars, output_vars):
 
 
 def plot_feature_importance(input_df, output_df):
-    """
-    Calculate and visualize feature importance using a simple model.
+    """Calculate and visualize feature importance using a simple model.
 
     Parameters:
     -----------
@@ -750,8 +741,7 @@ def create_impact_by_category_plot(
     ylim=None,
     is_scalled=False,
 ):
-    """
-    Create a plot showing ecological vs economic impact by a categorical variable.
+    """Create a plot showing ecological vs economic impact by a categorical variable.
 
     Parameters:
     -----------
@@ -767,6 +757,12 @@ def create_impact_by_category_plot(
         Size of scatter points
     label_format : callable, optional
         Function to format category value for label
+    xlim : tuple, optional
+        X-axis limits for the plot
+    ylim : tuple, optional
+        Y-axis limits for the plot
+    is_scalled : bool, optional
+        If True, use scaled impact values; otherwise, use raw values
 
     Returns:
     --------
@@ -823,13 +819,18 @@ def create_impact_by_category_plot(
 
 
 def create_impact_by_scenario_plot(results_df, xlim=None, ylim=None, is_scalled=False):
-    """
-    Create a plot showing ecological vs economic impact by scenario.
+    """Create a plot showing ecological vs economic impact by scenario.
     
     Parameters:
     -----------
     results_df : pd.DataFrame
         DataFrame containing simulation results
+    xlim : tuple, optional
+        X-axis limits for the plot
+    ylim : tuple, optional
+        Y-axis limits for the plot
+    is_scalled : bool, optional
+        If True, use scaled impact values; otherwise, use raw values
 
     Returns:
     --------
@@ -894,13 +895,14 @@ def create_impact_by_scenario_plot(results_df, xlim=None, ylim=None, is_scalled=
 
 
 def create_multidimensional_impact_plot(results_df, is_scalled=False):
-    """
-    Create a plot showing ecological vs economic impact.
+    """Create a plot showing ecological vs economic impact.
 
     Parameters:
     -----------
     results_df : pd.DataFrame
         DataFrame containing simulation results
+    is_scalled : bool, optional
+        If True, use scaled impact values; otherwise, use raw values
 
     Returns:
     --------
@@ -1086,8 +1088,7 @@ def create_multidimensional_impact_plot(results_df, is_scalled=False):
 
 
 def create_forecast_effect_plot(df, x, y, ax, size_var=None, abs_size=False):
-    """
-    Create a scatter plot showing the effect of forecast parameters.
+    """Create a scatter plot showing the effect of forecast parameters.
 
     Parameters:
     -----------
@@ -1138,14 +1139,15 @@ def create_forecast_effect_plot(df, x, y, ax, size_var=None, abs_size=False):
 
 
 def analyze_cooperation_patterns(results_df, is_scalled=False):
-    """
-    Analyze cooperation patterns across different scenarios.
+    """Analyze cooperation patterns across different scenarios.
 
     Parameters:
     -----------
     results_df : pd.DataFrame
         DataFrame containing simulation results with cooperation_percentage
         and related parameters
+    is_scalled : bool, optional
+        If True, use scaled impact values; otherwise, use raw values
 
     Returns:
     --------
@@ -1261,8 +1263,7 @@ def analyze_cooperation_patterns(results_df, is_scalled=False):
 
 
 def analyze_raw_impact(results_df):
-    """
-    Analyze raw (unscaled) ecological impact across different scenarios.
+    """Analyze raw (unscaled) ecological impact across different scenarios.
 
     Parameters:
     -----------
@@ -1320,8 +1321,7 @@ def analyze_raw_impact(results_df):
 
 
 def analyze_cooperation_by_forecast_params(results_df):
-    """
-    Analyze how forecast parameters (bias and uncertainty) affect cooperation levels.
+    """Analyze how forecast parameters (bias and uncertainty) affect cooperation levels.
 
     Parameters:
     -----------
@@ -1364,13 +1364,14 @@ def analyze_cooperation_by_forecast_params(results_df):
 
 
 def comprehensive_analysis(results_df, is_scalled=False):
-    """
-    Perform a comprehensive analysis of all key metrics and their relationships.
+    """Perform a comprehensive analysis of all key metrics and their relationships.
 
     Parameters:
     -----------
     results_df : pd.DataFrame
         DataFrame containing simulation results
+    is_scalled : bool, optional
+        If True, use scaled impact values; otherwise, use raw values
 
     Returns:
     --------

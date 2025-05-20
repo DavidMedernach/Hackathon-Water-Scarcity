@@ -1,5 +1,4 @@
-"""
-Scenarios for the water management simulation.
+"""Scenarios for the water management simulation.
 
 This module defines various scenarios for the water management simulation,
 including different configurations of biases, uncertainties, and scarcity levels.

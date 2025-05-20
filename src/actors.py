@@ -1,5 +1,4 @@
-"""
-Actors module for the Water Management Simulation.
+"""Actors module for the Water Management Simulation.
 
 This module handles all actor-related functionality including:
 - Actor initialization and parameter management
@@ -13,8 +12,7 @@ import src.utils as utils
 
 
 class ActorManager:
-    """
-    Manages the actors in the water management simulation.
+    """Manages the actors in the water management simulation.
 
     This class handles actor initialization, decision-making, learning,
     and storage management for all actors in the simulation.
@@ -24,8 +22,7 @@ class ActorManager:
     """
 
     def __init__(self, simulation):
-        """
-        Initialize the actor manager.
+        """Initialize the actor manager.
 
         Args:
             simulation: The parent simulation instance.
@@ -34,8 +31,7 @@ class ActorManager:
         self._initialize_actors_parameters()
 
     def _initialize_actors_parameters(self) -> None:
-        """
-        Initialize actor parameters from configuration files.
+        """Initialize actor parameters from configuration files.
 
         Loads actor parameters from YAML files and processes them to prepare for simulation.
         This includes setting up actor-specific attributes and scaling demands and learning rates.
@@ -73,8 +69,7 @@ class ActorManager:
         self._initialize_history_containers()
 
     def _scale_actors_demands(self) -> None:
-        """
-        Scale actor demands based on scarcity and negotiation difficulty.
+        """Scale actor demands based on scarcity and negotiation difficulty.
 
         Adjusts the water demands of actors to ensure they are appropriate for the
         simulation scenario, based on water scarcity and difficulty of negotiation.
@@ -128,8 +123,7 @@ class ActorManager:
         self.sim.incentive_threshold = max_total_benefit * 10
 
     def _scale_learning_rate(self) -> None:
-        """
-        Scale the learning rate for each actor.
+        """Scale the learning rate for each actor.
 
         Adjusts learning rates based on maximum possible benefits to ensure
         appropriate learning speed.
@@ -138,8 +132,7 @@ class ActorManager:
         self.sim.actors_learning_rate = self.sim.actors_lr_factor / max_benef
 
     def _initialize_history_containers(self) -> None:
-        """
-        Initialize all containers as NumPy arrays with pre-allocated space.
+        """Initialize all containers as NumPy arrays with pre-allocated space.
 
         Sets up the arrays that will store simulation history, including actor
         actions, rewards, water usage, and ecological impacts over all iterations.
@@ -197,8 +190,7 @@ class ActorManager:
         self.sim.h_avg_pump[:, :, 0] = self.sim.actors_demands[:, np.newaxis]
 
     def get_actor_actions(self, actor_tendency: np.ndarray) -> np.ndarray:
-        """
-        Determine actor actions based on their tendency to cooperate.
+        """Determine actor actions based on their tendency to cooperate.
 
         Generates a boolean array where True indicates cooperation and False indicates defection.
 
@@ -211,8 +203,7 @@ class ActorManager:
         return self.sim.rng_actors.random(self.sim.nb_actors) < actor_tendency
 
     def get_water_predictions(self) -> np.ndarray:
-        """
-        Generate water availability predictions for each actor.
+        """Generate water availability predictions for each actor.
 
         Calculates predicted river flows for each actor based on actual flow,
         forecast bias, and uncertainty.
@@ -247,8 +238,7 @@ class ActorManager:
         return np.maximum(0, water_pred)
 
     def update_storage(self) -> None:
-        """
-        Update the water storage for each actor.
+        """Update the water storage for each actor.
 
         Calculates new storage levels based on previous storage, water pumped,
         demand usage, and storage losses.
@@ -263,8 +253,7 @@ class ActorManager:
         )
 
     def get_previous_storage(self, turn: int = 1) -> np.ndarray:
-        """
-        Get the water storage levels from a previous turn.
+        """Get the water storage levels from a previous turn.
 
         Args:
             turn: Number of turns to look back (default: 1).
@@ -278,8 +267,7 @@ class ActorManager:
             return self.sim.h_storage[:, self.sim.it, self.sim.trn - turn].copy()
 
     def get_previous_actions(self, turn: int = 1) -> np.ndarray:
-        """
-        Get the actions from a previous turn.
+        """Get the actions from a previous turn.
 
         Args:
             turn: Number of turns to look back (default: 1).
@@ -293,8 +281,7 @@ class ActorManager:
             return self.sim.h_actions[:, self.sim.it, self.sim.trn - turn].copy()
 
     def get_previous_alt_storage(self, turn: int = 1) -> np.ndarray:
-        """
-        Get the alternative water storage levels from a previous turn.
+        """Get the alternative water storage levels from a previous turn.
 
         Used for calculating counterfactual scenarios in learning.
 
@@ -312,8 +299,7 @@ class ActorManager:
     def compute_alternative_rewards(
         self, riverflow_predictions: np.ndarray
     ) -> np.ndarray:
-        """
-        Compute alternative rewards to determine the value of cooperation/defection.
+        """Compute alternative rewards to determine the value of cooperation/defection.
 
         For each actor, calculates the difference in rewards between their
         actual decision and the opposite decision, considering potential
@@ -403,8 +389,7 @@ class ActorManager:
         return alt_rewards
 
     def update_actor_h_tendencies(self, diff_rewards: np.ndarray) -> None:
-        """
-        Update actor tendencies to cooperate based on reward differences.
+        """Update actor tendencies to cooperate based on reward differences.
 
         Adjusts each actor's cooperation tendency based on their learning rate
         and the difference between actual and alternative rewards.

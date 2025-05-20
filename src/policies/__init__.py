@@ -1,5 +1,4 @@
-"""
-Policy implementations for the Water Management Simulation.
+"""Policy implementations for the Water Management Simulation.
 
 This package provides implementations of different policies for
 the water management simulation, including:

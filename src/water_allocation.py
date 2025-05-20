@@ -1,5 +1,4 @@
-"""
-Water allocation module for the Water Management Simulation.
+"""Water allocation module for the Water Management Simulation.
 
 This module handles all water allocation related functionality including:
 - Water pumping calculations
@@ -13,8 +12,7 @@ from typing import Tuple
 
 
 class WaterAllocator:
-    """
-    Manages water allocation in the simulation.
+    """Manages water allocation in the simulation.
 
     This class handles the calculation of water pumping, economic rewards,
     and incentives based on actors' decisions and water availability.
@@ -24,8 +22,7 @@ class WaterAllocator:
     """
 
     def __init__(self, simulation):
-        """
-        Initialize the water allocator.
+        """Initialize the water allocator.
 
         Args:
             simulation: The parent simulation instance.
@@ -38,8 +35,7 @@ class WaterAllocator:
         riverflow_predictions: np.ndarray,
         storage: np.ndarray,
     ) -> np.ndarray:
-        """
-        Compute the amount of water each actor will pump from the river.
+        """Compute the amount of water each actor will pump from the river.
 
         Determines how much water each actor will take based on their cooperation status,
         current crisis level, storage capacity, and water availability predictions.
@@ -207,8 +203,7 @@ class WaterAllocator:
         water_pump: np.ndarray,
         water_used_by_actor: np.ndarray,
     ) -> Tuple[np.ndarray, np.ndarray]:
-        """
-        Compute rewards and incentives for each actor.
+        """Compute rewards and incentives for each actor.
 
         Calculates the economic rewards for each actor based on water usage,
         cooperation status, and environmental impacts.
@@ -271,8 +266,7 @@ class WaterAllocator:
         return reward, incentives
 
     def compute_avg_incomes(self) -> None:
-        """
-        Compute and update the average income for each actor.
+        """Compute and update the average income for each actor.
 
         Calculates a rolling average of actor incomes over the past 52 turns (one year),
         updating only on complete years.
@@ -296,8 +290,7 @@ class WaterAllocator:
             self.sim.last_compute_avg_incomes += 1
 
     def compute_avg_pump(self) -> None:
-        """
-        Compute and update the average water pumping for each actor.
+        """Compute and update the average water pumping for each actor.
 
         Calculates a rolling average of water pumping over the past 52 turns (one year),
         updating only on complete years.
@@ -316,8 +309,7 @@ class WaterAllocator:
             ]
 
     def compute_h_econ_impacts(self) -> None:
-        """
-        Compute economic impacts under different allocation scenarios.
+        """Compute economic impacts under different allocation scenarios.
 
         Calculates and stores:
         - Maximum possible economic impact (optimal allocation by value)
@@ -333,8 +325,7 @@ class WaterAllocator:
         def greedy_allocation(
             available: float, demands: np.ndarray, order: np.ndarray
         ) -> np.ndarray:
-            """
-            Perform greedy allocation of water resources.
+            """Perform greedy allocation of water resources.
 
             Args:
                 available: Amount of water available for allocation.

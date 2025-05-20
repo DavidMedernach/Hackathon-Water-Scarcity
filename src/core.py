@@ -1,5 +1,4 @@
-"""
-Core simulation module for the Water Management Simulation.
+"""Core simulation module for the Water Management Simulation.
 
 This module provides the main WaterManagementSimulation class that coordinates
 the different components of the simulation: actors, water allocation, and ecological impacts.
@@ -17,8 +16,7 @@ from .ecology import EcologyManager
 
 
 class WaterManagementSimulation:
-    """
-    Water Management Simulation that models the behavior of actors sharing water resources.
+    """Water Management Simulation that models the behavior of actors sharing water resources.
 
     This simulation allows for modeling different scenarios of water resource allocation
     with multiple actors who can cooperate or defect based on their learning from previous
@@ -63,8 +61,7 @@ class WaterManagementSimulation:
     }
 
     def __init__(self, **args):
-        """
-        Initialize the water management simulation with the provided parameters.
+        """Initialize the water management simulation with the provided parameters.
 
         Args:
             **args: Arbitrary keyword arguments. Valid keys are defined in ALLOWED_PARAMETERS.
@@ -114,8 +111,7 @@ class WaterManagementSimulation:
             self.real_riverflows = None
 
     def set_parameter(self, value: Any, name: str) -> None:
-        """
-        Set a specific parameter of the simulation.
+        """Set a specific parameter of the simulation.
 
         Args:
             value: The value to set for the parameter.
@@ -129,8 +125,7 @@ class WaterManagementSimulation:
         setattr(self, name, value)
 
     def get_data(self, data_type: str) -> np.ndarray:
-        """
-        Get history data for a specific attribute.
+        """Get history data for a specific attribute.
 
         Args:
             data_type: The name of the attribute to retrieve.
@@ -146,8 +141,7 @@ class WaterManagementSimulation:
         return getattr(self, data_type)
 
     def run_simulation(self, seed: int = None) -> None:
-        """
-        Run the complete water management simulation.
+        """Run the complete water management simulation.
 
         Executes the simulation for the specified number of iterations and turns,
         processing each turn in sequence.
@@ -168,8 +162,7 @@ class WaterManagementSimulation:
                 self._process_turn()
 
     def _process_turn(self) -> None:
-        """
-        Process a single turn of the simulation.
+        """Process a single turn of the simulation.
 
         Executes all calculations for a single time step, including actor actions,
         water allocation, rewards, and environmental impacts.
@@ -245,8 +238,7 @@ class WaterManagementSimulation:
             self.actor_manager.update_actor_h_tendencies(diff_rewards)
 
     def get_final_scores_scaled(self) -> List[float]:
-        """
-        Calculate final normalized scores for the simulation.
+        """Calculate final normalized scores for the simulation.
 
         Returns:
             List containing [ecological_breach_score, economic_impact_score].
@@ -261,8 +253,7 @@ class WaterManagementSimulation:
         DOE: float,
         DCR: float,
     ) -> np.ndarray:
-        """
-        Quota policy placeholder.
+        """Quota policy placeholder.
 
         This method can be overridden with a custom implementation.
 
@@ -292,8 +283,7 @@ class WaterManagementSimulation:
         DOE: float = 15,
         DCR: float = 10,
     ) -> np.ndarray:
-        """
-        Incentive policy placeholder.
+        """Incentive policy placeholder.
 
         Args:
             actions: Boolean array indicating cooperation status.

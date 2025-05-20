@@ -1,5 +1,4 @@
-"""
-Quota policies for the Water Management Simulation.
+"""Quota policies for the Water Management Simulation.
 
 This module provides implementations of different quota policies
 that can be used in the simulation to regulate water allocation.
@@ -16,8 +15,7 @@ def no_quota(
     DOE: float,
     DCR: float,
 ) -> np.ndarray:
-    """
-    No restrictions on quota policy.
+    """No restrictions on quota policy.
 
     Allows all actors to pump twice their average amount regardless of crisis level.
 
@@ -43,8 +41,7 @@ def hard_quota(
     DOE: float,
     DCR: float,
 ) -> np.ndarray:
-    """
-    Hard quota policy based on priority and crisis level.
+    """Hard quota policy based on priority and crisis level.
 
     Sets quotas to zero for actors with priority less than the current crisis level.
 
