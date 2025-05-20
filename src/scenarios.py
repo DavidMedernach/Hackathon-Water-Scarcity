@@ -1,3 +1,12 @@
+"""
+Scenarios for the water management simulation.
+
+This module defines various scenarios for the water management simulation,
+including different configurations of biases, uncertainties, and scarcity levels.
+It also provides a function to run simulations across all defined scenarios
+and return a DataFrame with the results.
+"""
+
 import src.utils as utils
 import src.core as wms
 import pandas as pd
@@ -12,9 +21,7 @@ def run_all_scenarios(
     custom_incentive_policy: Callable,
     custom_quota: Callable,
 ):
-    """
-    Run simulations across all defined scenarios and return a DataFrame with results.
-    """
+    """Run simulations across all defined scenarios and return a DataFrame with results."""
     # Scenario parameters
     scenarios = [
         "0.yml",
@@ -94,7 +101,7 @@ def run_all_scenarios(
                         simulation.run_simulation()
 
                         # Get scores
-                        ecological_impact, economic_impact, priority_ok = (
+                        ecol_impact, econ_impact, priority_ok = (
                             simulation.get_final_scores_scaled()
                         )
 
@@ -106,8 +113,8 @@ def run_all_scenarios(
                         avg_coop = np.mean(simulation.h_actions)
 
                         # Store results
-                        all_ecological_impact.append(ecological_impact)
-                        all_economic_impact.append(economic_impact)
+                        all_ecological_impact.append(ecol_impact)
+                        all_economic_impact.append(econ_impact)
                         all_biases.append(bias)
                         all_uncertainties.append(uncertainty)
                         all_scarcities.append(scarcity)
@@ -119,12 +126,12 @@ def run_all_scenarios(
                         all_raw_ecological_impact.append(float(raw_ecol_impact))
                         all_raw_economic_impact.append(float(raw_econ_impact))
                         all_cooperation_percentage.append(float(avg_coop))
-
+                        coop_p = avg_coop * 100.0
                         print(
                             f"Scenario: {scenario}, Station: {station}, Scarcity: {scarcity}, "
                             + f"Bias: {bias}, Uncertainty: {uncertainty}, "
-                            + f"Eco Impact: {ecological_impact:.3f}, Econ Impact: {economic_impact:.3f}, "
-                            + f"Raw Eco Impact: {raw_ecol_impact:.1f}, Cooperation %: {avg_coop*100:.1f}%"
+                            + f"Eco Impact: {ecol_impact:.3f}, Econ Impact: {econ_impact:.3f}, "
+                            + f"Raw Eco Impact: {raw_ecol_impact:.1f}, Cooperation %: {coop_p:.1f}%"
                         )
 
     # Create DataFrame with results

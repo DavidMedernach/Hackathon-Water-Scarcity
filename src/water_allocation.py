@@ -9,7 +9,7 @@ This module handles all water allocation related functionality including:
 """
 
 import numpy as np
-from typing import List, Dict, Any, Tuple, Optional, Union
+from typing import Tuple
 
 
 class WaterAllocator:
@@ -45,7 +45,8 @@ class WaterAllocator:
         current crisis level, storage capacity, and water availability predictions.
 
         Args:
-            actions: Boolean array indicating which actors are cooperating (True) or defecting (False).
+            actions: Boolean array indicating which actors are 
+            cooperating (True) or defecting (False).
             riverflow_predictions: Array of predicted river flows for each actor.
             storage: Current water storage for each actor.
 
@@ -213,7 +214,8 @@ class WaterAllocator:
         cooperation status, and environmental impacts.
 
         Args:
-            actions: Boolean array indicating which actors are cooperating (True) or defecting (False).
+            actions: Boolean array indicating which actors are 
+            cooperating (True) or defecting (False).
             riverflow: Array of river flows for each turn.
             water_pump: Array of water consumption (pumping) for each actor.
             water_used_by_actor: Array of water actually used by each actor.
@@ -250,7 +252,7 @@ class WaterAllocator:
             avg_incomes=self.sim.h_taxed_incomes[:, self.sim.it, self.sim.trn],
             water_pump=water_pump,
             avg_pump=self.sim.h_avg_pump[:, self.sim.it, self.sim.trn],
-            is_crisis=self.sim.w_crisis[self.sim.it, 0 : self.sim.trn + 1],
+            is_crisis=self.sim.w_crisis[self.sim.it, 0: self.sim.trn + 1],
             water_flows=riverflow[: self.sim.trn + 1],
             quota=self.sim.h_quota[:, self.sim.it, self.sim.trn],
             DOE=self.sim.DOE,
@@ -278,7 +280,7 @@ class WaterAllocator:
         if self.sim.last_compute_avg_incomes == 52:
             # Calculate annual average of income over last 52 turns
             avg_incomes = np.mean(
-                self.sim.h_rewards[:, self.sim.it, self.sim.trn - 52 : self.sim.trn],
+                self.sim.h_rewards[:, self.sim.it, self.sim.trn - 52: self.sim.trn],
                 axis=1,
             )
             self.sim.h_taxed_incomes[:, self.sim.it, self.sim.trn] = avg_incomes
@@ -303,7 +305,7 @@ class WaterAllocator:
         if self.sim.last_compute_avg_incomes == 52:
             # Calculate annual average of water pumping over last 52 turns
             avg_pump = np.mean(
-                self.sim.h_water_pump[:, self.sim.it, self.sim.trn - 52 : self.sim.trn],
+                self.sim.h_water_pump[:, self.sim.it, self.sim.trn - 52: self.sim.trn],
                 axis=1,
             )
             self.sim.h_avg_pump[:, self.sim.it, self.sim.trn] = avg_pump

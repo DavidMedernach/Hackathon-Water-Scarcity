@@ -9,7 +9,6 @@ This module handles all actor-related functionality including:
 """
 
 import numpy as np
-from typing import List, Dict, Any, Tuple, Optional, Union
 import src.utils as utils
 
 
@@ -122,10 +121,7 @@ class ActorManager:
         self.sim.cost_of_negotiation = scaling * factor
 
     def _scale_incentive_thresholds(self) -> None:
-        """
-        Scale incentive thresholds based on demands and water values.
-
-        """
+        """Scale incentive thresholds based on demands and water values."""
         max_benefit = np.sum(self.sim.actors_demands * self.sim.actors_values)
         max_total_benefit = max_benefit * self.sim.total_turns
 

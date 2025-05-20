@@ -1,5 +1,5 @@
 """
-Water Management Analysis Module
+Water Management Analysis Module.
 
 This module provides visualization and analysis functions for water allocation
 simulation results. It includes tools for analyzing the relationships between
@@ -11,11 +11,8 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 from matplotlib.lines import Line2D
-from typing import Dict, List, Optional, Tuple
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
-
-from src import ecology
 
 # Set consistent styling for all plots
 plt.style.use("seaborn-v0_8-whitegrid")
@@ -231,6 +228,8 @@ def add_impact_plot_elements(ax, results_df=None):
 
 def analyze_scenario_impacts(results_df, ylim=None, xlim=None, is_scalled=False):
     """
+    Visualize and analyze the impacts of different scenarios.
+
     Analyze impacts across different scenarios, stations, and scarcity levels
     with improved visualization aesthetics.
 
@@ -303,6 +302,7 @@ def analyze_scenario_impacts(results_df, ylim=None, xlim=None, is_scalled=False)
 def analyze_forecast_effects(results_df, is_scalled=False):
     """
     Analyze the effects of forecast bias and uncertainty on simulation outcomes.
+
     Creates matrix of plots showing relationships between bias, uncertainty,
     and impact measures.
 
@@ -466,6 +466,8 @@ def analyze_forecast_effects(results_df, is_scalled=False):
 
 def correlation_analysis(results_df, is_scalled=False):
     """
+    Correlation analysis.
+
     Perform targeted correlation analysis focusing on relationships between
     input parameters and simulation outcomes.
 
@@ -481,7 +483,6 @@ def correlation_analysis(results_df, is_scalled=False):
     None
         Displays correlation visualizations
     """
-
     if is_scalled:
         ecological_impact = "ecological_impact"
         economic_impact = "economic_impact"
@@ -660,7 +661,8 @@ def plot_key_numeric_relationships(results_df, input_vars, output_vars):
             # Calculate correlation coefficient
             corr = results_df[[input_var, output_var]].corr().iloc[0, 1]
             axes[i].set_title(
-                f"{output_var.replace('_', ' ').title()} vs {input_var.replace('_', ' ').title()}\nCorrelation: {corr:.3f}",
+                f"""{output_var.replace('_', ' ').title()} 
+                vs {input_var.replace('_', ' ').title()}\nCorrelation: {corr:.3f}""",
                 fontsize=12,
             )
 
@@ -694,7 +696,6 @@ def plot_feature_importance(input_df, output_df):
     output_df : pd.DataFrame
         DataFrame containing output variables
     """
-
     plt.figure(figsize=(12, 10))
 
     # Create subplots for each output variable
@@ -824,8 +825,7 @@ def create_impact_by_category_plot(
 def create_impact_by_scenario_plot(results_df, xlim=None, ylim=None, is_scalled=False):
     """
     Create a plot showing ecological vs economic impact by scenario.
-    Uses different markers and colors for better differentiation.
-
+    
     Parameters:
     -----------
     results_df : pd.DataFrame
@@ -895,8 +895,7 @@ def create_impact_by_scenario_plot(results_df, xlim=None, ylim=None, is_scalled=
 
 def create_multidimensional_impact_plot(results_df, is_scalled=False):
     """
-    Create a plot showing ecological vs economic impact with
-    multiple dimensions encoded (scenario, station, scarcity).
+    Create a plot showing ecological vs economic impact.
 
     Parameters:
     -----------
@@ -1080,6 +1079,7 @@ def create_multidimensional_impact_plot(results_df, is_scalled=False):
         title="Scenario Type",
         position=(0.85, 0.8),
     )
+    ax.add_artist(third_legend)
 
     plt.tight_layout(rect=[0, 0, 0.85, 1])  # Adjust right margin for legends
     plt.show()
@@ -1087,8 +1087,7 @@ def create_multidimensional_impact_plot(results_df, is_scalled=False):
 
 def create_forecast_effect_plot(df, x, y, ax, size_var=None, abs_size=False):
     """
-    Create a scatter plot showing the effect of forecast parameters
-    on impact measures.
+    Create a scatter plot showing the effect of forecast parameters.
 
     Parameters:
     -----------
@@ -1110,16 +1109,10 @@ def create_forecast_effect_plot(df, x, y, ax, size_var=None, abs_size=False):
     None
         Modifies the provided axes
     """
-    # Set up size variable
     if size_var:
         sizes = (50, 200)
-        if abs_size:
-            size_values = df[size_var].abs()
-        else:
-            size_values = df[size_var]
     else:
         sizes = 80
-        size_values = None
 
     # Create the scatter plot
     sns.scatterplot(
@@ -1146,8 +1139,7 @@ def create_forecast_effect_plot(df, x, y, ax, size_var=None, abs_size=False):
 
 def analyze_cooperation_patterns(results_df, is_scalled=False):
     """
-    Analyze cooperation patterns across different scenarios, scarcity levels,
-    and forecast parameters.
+    Analyze cooperation patterns across different scenarios.
 
     Parameters:
     -----------
@@ -1249,7 +1241,7 @@ def analyze_cooperation_patterns(results_df, is_scalled=False):
     station_colors = [COLOR_SCHEMES["station"][s] for s in station_coop["station"]]
 
     # Create bar plot with error bars
-    bars = axs[1, 1].bar(
+    axs[1, 1].bar(
         station_coop["station"].astype(str),
         station_coop["mean"],
         yerr=station_coop["std"],
@@ -1270,8 +1262,7 @@ def analyze_cooperation_patterns(results_df, is_scalled=False):
 
 def analyze_raw_impact(results_df):
     """
-    Analyze raw (unscaled) ecological impact across different scenarios,
-    stations, and scarcity levels.
+    Analyze raw (unscaled) ecological impact across different scenarios.
 
     Parameters:
     -----------
@@ -1386,7 +1377,6 @@ def comprehensive_analysis(results_df, is_scalled=False):
     None
         Displays comprehensive visualizations and summary statistics
     """
-
     if is_scalled:
         ecological_impact = "ecological_impact"
         economic_impact = "economic_impact"

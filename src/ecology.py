@@ -9,7 +9,7 @@ This module handles all ecology-related functionality including:
 """
 
 import numpy as np
-from typing import List, Dict, Any, Tuple, Optional, Union
+from typing import List, Tuple
 
 
 class EcologyManager:
@@ -207,7 +207,7 @@ class EcologyManager:
         if len(medium_idxs) > 0 and len(low_idxs) > 0 and med_sat <= low_sat * factor:
             if hasattr(self.sim, "verbose") and self.sim.verbose:
                 print(
-                    "Violation: medium-priority actors must outperform low-priority actors by factor",
+                    "Violation: medium-priority actors must outperform low-priority actors.",
                     factor,
                 )
                 print(
@@ -219,14 +219,11 @@ class EcologyManager:
                     low_sat,
                 )
             # Return scores with penalties
-            print(
-                "Penalty applied for medium-priority actors not outperforming low-priority actors."
-            )
             return [ecol_breach, economic_impact, 0.0]
         if len(high_idxs) > 0 and len(medium_idxs) > 0 and high_sat <= med_sat * factor:
             if hasattr(self.sim, "verbose") and self.sim.verbose:
                 print(
-                    "Violation: medium-priority actors must outperform low-priority actors by factor",
+                    "Violation: medium-priority actors must outperform low-priority actors.",
                     factor,
                 )
                 print(
@@ -239,9 +236,6 @@ class EcologyManager:
                 )
             # Return scores with penalties
 
-            print(
-                "Penalty applied for high-priority actors not outperforming medium-priority actors."
-            )
             return [ecol_breach, economic_impact, 0.0]
         else:
             # No violation, return normal scores

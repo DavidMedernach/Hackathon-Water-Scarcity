@@ -1,5 +1,5 @@
 """
-Plot Analysis Module for Water Management Simulation
+Plot Analysis Module for Water Management Simulation.
 
 This module provides visualization functions for analyzing simulation results,
 including river flows, actor behaviors, ecological impacts, and economic outcomes.
@@ -7,8 +7,7 @@ including river flows, actor behaviors, ecological impacts, and economic outcome
 
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib
-from typing import Dict, List, Tuple, Optional, Union, Any
+from typing import List, Tuple, Optional
 import src.core as wms
 
 # =====================================================================
@@ -651,7 +650,6 @@ def plot_river_flow(
     xlim
         Optional (xmin, xmax).
     """
-
     DOE = simulation.DOE
     DCR = simulation.DCR
     actor_labels = simulation.actors_name
@@ -716,9 +714,7 @@ def plot_remaining_water(
     """
     DOE = simulation.DOE
     DCR = simulation.DCR
-    actor_labels = simulation.actors_name
     actor_demands = simulation.actors_demands
-    actor_colors = COLOR_SCHEMES["actor"]
     river_flow = simulation.real_riverflows[weeks]
     # pronounced y=0 axis
     ax.axhline(0, color="black", linewidth=2)

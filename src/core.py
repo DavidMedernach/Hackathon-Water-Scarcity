@@ -7,14 +7,13 @@ the different components of the simulation: actors, water allocation, and ecolog
 
 import numpy as np
 import pandas as pd
-from typing import List, Dict, Any, Tuple, Optional, Union, Callable
+from typing import List, Any
 from types import MethodType
 
 # These imports will be from actual modules once they're created
 from .actors import ActorManager
 from .water_allocation import WaterAllocator
 from .ecology import EcologyManager
-from . import utils
 
 
 class WaterManagementSimulation:
@@ -104,9 +103,7 @@ class WaterManagementSimulation:
         self.compute_actor_quota = MethodType(self._default_compute_quota, self)
 
     def get_real_riverflows(self) -> None:
-        """
-        Get the real river flows for the given station.
-        """
+        """Get the real river flows for the given station."""
         if hasattr(self, "station") and self.station != -1:
             data = pd.read_csv("parameters/data.csv")
             riverflows = data[data["station_code"] == self.station]
@@ -265,7 +262,7 @@ class WaterManagementSimulation:
         DCR: float,
     ) -> np.ndarray:
         """
-        Default implementation of quota computation.
+        Quota policy placeholder.
 
         This method can be overridden with a custom implementation.
 
@@ -296,9 +293,7 @@ class WaterManagementSimulation:
         DCR: float = 10,
     ) -> np.ndarray:
         """
-        Default implementation of incentive policy.
-
-        This method can be overridden with a custom implementation.
+        Incentive policy placeholder.
 
         Args:
             actions: Boolean array indicating cooperation status.
