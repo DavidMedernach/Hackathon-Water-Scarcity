@@ -14,7 +14,7 @@ Open `multi_scenarios.ipynb` for comparative visualizations and advanced analysi
 
 You can install dependencies either via `pip` (using `requirements.txt`) or using Poetry.
 
-### Option 1: Using Poetry (recommended)
+### Option 1: Using Poetry
 
 1. **Install Poetry**  
    Follow instructions at https://python-poetry.org/docs/#installation
@@ -47,8 +47,6 @@ You can install dependencies either via `pip` (using `requirements.txt`) or usin
    ```bash
    pip install -r requirements.txt
    ```
-
-> **Note:** We recommend committing `poetry.lock` for reproducibility, but you can regenerate it from `pyproject.toml` if needed.
 
 ## Project Structure
 
