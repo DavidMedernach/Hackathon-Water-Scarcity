@@ -32,7 +32,7 @@ You can install dependencies either via `pip` (using `requirements.txt`) or usin
 
 4. **Activate virtual environment**  
    ```bash
-   poetry shell
+   poetry env activate
    ```
 
 ### Option 2: Using pip
