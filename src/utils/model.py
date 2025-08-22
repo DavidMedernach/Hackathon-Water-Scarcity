@@ -372,7 +372,7 @@ def compare_models_per_station(
 
 
 def load_models_auto(mn: str, dir: str = "../../models/") -> List[any]:
-    """Auto-load the latest models for week0, week1, and week2...
+    """Auto-load the latest models for week0, week1 and week2.
 
     Args:
         mn (str): The base model name to search for
@@ -400,7 +400,7 @@ def load_models_auto(mn: str, dir: str = "../../models/") -> List[any]:
                     latest_paths[week_num] = (date_obj, fname)
 
     loaded_mapie = []
-    for i in [0, 1, 2, 3]:
+    for i in [0, 1, 2]:
         if i not in latest_paths:
             raise ValueError(f"No mapie_quantile model found for week{i} in {dir}.")
         model_file = latest_paths[i][1]
